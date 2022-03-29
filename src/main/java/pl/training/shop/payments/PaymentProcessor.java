@@ -5,7 +5,7 @@ import lombok.extern.java.Log;
 import java.time.Instant;
 
 @Log
-public class PaymentService {
+public class PaymentProcessor {
 
     private static final String LOG_FORMAT = "A new payment of %s has been initiated";
 
