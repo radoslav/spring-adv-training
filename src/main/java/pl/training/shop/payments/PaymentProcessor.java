@@ -14,7 +14,7 @@ public class PaymentProcessor {
     public Payment process(PaymentRequest paymentRequest) {
         var payment = Payment.builder()
                 .id(paymentIdGenerator.getNext())
-                .value(paymentRequest.getMoney())
+                .value(paymentRequest.getValue())
                 .timestamp(Instant.now())
                 .status(PaymentStatus.STARTED)
                 .build();

@@ -7,6 +7,6 @@ import org.javamoney.moneta.FastMoney;
 public class PaymentRequest {
 
     Long id;
-    FastMoney money;
+    FastMoney value;
 
 }
