@@ -2,12 +2,8 @@ package pl.training.shop;
 
 import lombok.extern.java.Log;
 import org.javamoney.moneta.FastMoney;
-import pl.training.shop.payments.PaymentRequest;
 import pl.training.shop.payments.PaymentProcessor;
-
-import javax.money.CurrencyUnit;
-import javax.money.Monetary;
-import java.util.Locale;
+import pl.training.shop.payments.PaymentRequest;
 
 @Log
 public class Application {
