@@ -12,12 +12,11 @@ import java.util.Locale;
 @Log
 public class Application {
 
-    private static final Locale DEFAULT_LOCALE = new Locale("pl", "PL");
-    private static final CurrencyUnit DEFAULT_CURRENCY_UNIT = Monetary.getCurrency(DEFAULT_LOCALE);
+    private static final String DEFAULT_CURRENCY_CODE = "PLN";
 
     public static void main(String[] args) {
         var paymentService = new PaymentProcessor();
-        var paymentRequest = new PaymentRequest(1L, FastMoney.of(1_000, DEFAULT_CURRENCY_UNIT));
+        var paymentRequest = new PaymentRequest(1L, FastMoney.of(1_000, DEFAULT_CURRENCY_CODE));
         var payment = paymentService.process(paymentRequest);
         log.info(payment.toString());
     }
