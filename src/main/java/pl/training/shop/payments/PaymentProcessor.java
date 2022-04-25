@@ -3,6 +3,7 @@ package pl.training.shop.payments;
 import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
 import pl.training.shop.commons.aop.LogExecutionTime;
+import pl.training.shop.commons.aop.Retry;
 import pl.training.shop.time.TimeProvider;
 
 @RequiredArgsConstructor
@@ -15,6 +16,7 @@ public class PaymentProcessor implements PaymentService {
     private final PaymentRepository paymentsRepository;
     private final TimeProvider timeProvider;
 
+    @Retry(attempts = 2)
     @LogExecutionTime
     @LogPayment
     @Override
