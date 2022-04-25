@@ -2,23 +2,41 @@ package pl.training.shop.payments;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 
+@Order(100)
 @Aspect
 @Log
 @RequiredArgsConstructor
 public class ConsolePaymentLogger {
 
-    private static final String LOG_FORMAT = "A new payment of %s has been initiated";
-
-    @AfterReturning(value = "bean(paymentProcessor)", returning = "payment")
-    public void log(Payment payment) {
-        log.info(createLogEntry(payment));
+    @Pointcut("execution(pl.training.shop.payments.Payment pl.training.shop.*.PaymentProcessor.proc*(..))")
+    // @Pointcut("@annotation(Loggable)")
+    // @Pointcut("bean(paymentService)")
+    void process() {
     }
 
-    private String createLogEntry(Payment payment) {
-        return String.format(LOG_FORMAT, payment.getValue());
+    @Before(value = "process() && args(paymentRequest)")
+    public void onStart(JoinPoint joinPoint, PaymentRequest paymentRequest) {
+        // joinPoint.getSignature();
+        log.info("New payment request: " + paymentRequest);
+    }
+
+    @AfterReturning(value = "process()", returning = "payment")
+    public void onSuccess(Payment payment) {
+        log.info("A new payment of %s has been created".formatted(payment.getValue()));
+    }
+
+    @AfterThrowing(value = "process()", throwing = "exception")
+    public void onFailure(JoinPoint joinPoint, RuntimeException exception) {
+        log.info("Payment processing failed: %s (method: %s)".formatted(exception.getClass().getSimpleName(), joinPoint.getSignature().getName()));
+    }
+
+    @After("process()")
+    public void onFinish() {
+        log.info("Payment processing complete");
     }
 
     public void init() {
