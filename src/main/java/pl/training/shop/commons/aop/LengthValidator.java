@@ -16,20 +16,6 @@ public class LengthValidator {
 
     @Before("execution(* *(@pl.training.shop.commons.aop.Length (*)))")
     public void validate(JoinPoint joinPoint) throws NoSuchMethodException {
-        validate(joinPoint, (argument, lengthAnnotation) -> {
-            if (argument.length() < lengthAnnotation.value()) {
-                throw new IllegalArgumentException();
-            }
-        });
-    }
-
-    private interface Validator<V, A> {
-
-        void validate(V value, A annotation);
-
-    }
-
-    private void validate(JoinPoint joinPoint, Validator<String, Length> validator) throws NoSuchMethodException {
         var signature = (MethodSignature) joinPoint.getSignature();
         var methodName = signature.getMethod().getName();
         var parameterTypes = signature.getMethod().getParameterTypes();
@@ -37,24 +23,20 @@ public class LengthValidator {
         var arguments = joinPoint.getArgs();
         for (int index = 0; index < arguments.length; index++) {
             var argument = (String) arguments[index];
-            var lengthAnnotation = getLengthAnnotation(annotations[index]);
-            lengthAnnotation.ifPresent(length -> validator.validate(argument, length));
+            var annotation = getAnnotation(annotations[index]);
+            annotation.ifPresent(length -> {
+                if (argument.length() < length.value()) {
+                    throw new IllegalArgumentException();
+                }
+            });
         }
     }
 
-    private Optional<Length> getLengthAnnotation(Annotation[] annotations) {
+    private Optional<Length> getAnnotation(Annotation[] annotations) {
         return Arrays.stream(annotations)
                 .filter(Length.class::isInstance)
                 .map(Length.class::cast)
                 .findFirst();
     }
-
-//    private <A extends Annotation> Optional<? extends Annotation> getLengthAnnotation(Annotation[] annotations, Class<? extends Annotation> type) {
-//        return Arrays.stream(annotations)
-//                .filter(annotation -> annotation.getClass().isInstance(type))
-//                .map(annotation -> annotation.getClass().cast(type))
-//                .findFirst();
-//    }
-
 
 }
