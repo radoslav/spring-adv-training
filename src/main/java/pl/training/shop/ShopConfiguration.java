@@ -4,8 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import pl.training.shop.payments.PaymentFeeCalculator;
-import pl.training.shop.payments.PercentagePaymentFeeCalculator;
+import pl.training.shop.time.SystemTimeProvider;
+import pl.training.shop.time.TimeProvider;
 
 @EnableAspectJAutoProxy
 @ComponentScan
@@ -13,8 +13,8 @@ import pl.training.shop.payments.PercentagePaymentFeeCalculator;
 public class ShopConfiguration {
 
     @Bean
-    public PaymentFeeCalculator paymentFeeCalculator() {
-        return new PercentagePaymentFeeCalculator(0.01);
+    public TimeProvider timeProvider() {
+        return new SystemTimeProvider();
     }
 
 }
