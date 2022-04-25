@@ -49,4 +49,12 @@ public class LengthValidator {
                 .findFirst();
     }
 
+//    private <A extends Annotation> Optional<? extends Annotation> getLengthAnnotation(Annotation[] annotations, Class<? extends Annotation> type) {
+//        return Arrays.stream(annotations)
+//                .filter(annotation -> annotation.getClass().isInstance(type))
+//                .map(annotation -> annotation.getClass().cast(type))
+//                .findFirst();
+//    }
+
+
 }
