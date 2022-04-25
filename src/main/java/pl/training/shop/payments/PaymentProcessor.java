@@ -2,8 +2,10 @@ package pl.training.shop.payments;
 
 import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
+import org.springframework.stereotype.Component;
 import pl.training.shop.time.TimeProvider;
 
+@Component
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
 
