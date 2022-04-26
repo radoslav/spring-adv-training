@@ -2,6 +2,11 @@ package pl.training.shop.payments;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.training.shop.payments.adapters.logging.ConsolePaymentLogger;
+import pl.training.shop.payments.adapters.persistence.jpa.JpaPaymentRepository;
+import pl.training.shop.payments.domain.*;
+import pl.training.shop.payments.ports.PaymentRepository;
+import pl.training.shop.payments.ports.PaymentService;
 import pl.training.shop.time.TimeProvider;
 
 @Configuration

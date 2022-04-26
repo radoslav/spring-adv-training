@@ -1,7 +1,9 @@
-package pl.training.shop.payments;
+package pl.training.shop.payments.adapters.persistence.jpa;
 
 import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
+import pl.training.shop.payments.domain.Payment;
+import pl.training.shop.payments.ports.PaymentRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

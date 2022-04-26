@@ -1,4 +1,4 @@
-package pl.training.shop.payments;
+package pl.training.shop.payments.domain;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
