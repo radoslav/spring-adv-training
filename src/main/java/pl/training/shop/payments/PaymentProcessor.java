@@ -35,7 +35,7 @@ public class PaymentProcessor implements PaymentService {
         return Payment.builder()
                 .id(paymentIdGenerator.getNext())
                 .value(paymentValue)
-                .timestamp(Instant.now())
+                .timestamp(timeProvider.getTimestamp())
                 .status(PaymentStatus.STARTED)
                 .build();
     }
