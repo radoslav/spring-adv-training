@@ -8,8 +8,6 @@ import pl.training.shop.commons.aop.LogExecutionTime;
 import pl.training.shop.commons.aop.Retry;
 import pl.training.shop.time.TimeProvider;
 
-import java.time.Instant;
-
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
 
