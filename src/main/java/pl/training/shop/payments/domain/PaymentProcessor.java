@@ -2,6 +2,8 @@ package pl.training.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
+import pl.training.shop.commons.Page;
+import pl.training.shop.commons.ResultPage;
 import pl.training.shop.payments.ports.PaymentRepository;
 import pl.training.shop.payments.ports.PaymentService;
 import pl.training.shop.payments.ports.TimeProvider;
@@ -40,6 +42,11 @@ public class PaymentProcessor implements PaymentService {
     public Payment getById(String id) {
         return paymentsRepository.getById(id)
                 .orElseThrow(PaymentNotFoundException::new);
+    }
+
+    @Override
+    public ResultPage<Payment> getByStatus(PaymentStatus status, Page page) {
+        return paymentsRepository.getByStatu(status, page);
     }
 
 }
