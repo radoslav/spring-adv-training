@@ -16,12 +16,13 @@ public class JpaPaymentRepository implements PaymentRepository {
 
     @Override
     public Payment save(Payment payment) {
+        entityManager.persist(payment);
         return payment;
     }
 
     @Override
     public Optional<Payment> getById(String id) {
-        return Optional.empty();
+        return Optional.ofNullable(entityManager.find(Payment.class, id));
     }
 
 }
