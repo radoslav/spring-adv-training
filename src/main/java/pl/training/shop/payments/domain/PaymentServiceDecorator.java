@@ -20,7 +20,7 @@ public class PaymentServiceDecorator implements PaymentService {
     }
 
     @Atomic
-    public List<Payment> processes(List<PaymentRequest> paymentRequests) {
+    public List<Payment> process(List<PaymentRequest> paymentRequests) {
         return paymentRequests.stream().map(this::process).toList();
     }
 
