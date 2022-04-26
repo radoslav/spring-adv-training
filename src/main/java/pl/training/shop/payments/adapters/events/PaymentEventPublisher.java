@@ -16,7 +16,7 @@ public class PaymentEventPublisher {
 
     private final ApplicationEventPublisher eventPublisher;
 
-    @AfterReturning(value = "@annotation(LogPayment)", returning = "payment")
+    @AfterReturning(value = "@annotation(pl.training.shop.payments.domain.LogPayment)", returning = "payment")
     public void onPayment(Payment payment) {
         eventPublisher.publishEvent(new PaymentEvent(payment, CREATED));
     }

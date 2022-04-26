@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
 import pl.training.shop.payments.ports.PaymentRepository;
 import pl.training.shop.payments.ports.PaymentService;
-import pl.training.shop.time.TimeProvider;
+import pl.training.shop.payments.ports.TimeProvider;
 
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
@@ -28,7 +28,7 @@ public class PaymentProcessor implements PaymentService {
                 .id(paymentIdGenerator.getNext())
                 .value(paymentValue)
                 .timestamp(timeProvider.getTimestamp())
-                .status(PaymentStatus.STARTED)
+                .status(DEFAULT_PAYMENT_STATUS)
                 .build();
     }
 
