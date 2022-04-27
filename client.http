@@ -6,3 +6,15 @@ Content-Type: application/json
   "requestId": 1,
   "value": "200 PLN"
 }
+
+###
+
+GET http://localhost:8080/api/payments/67462977-6534-4ca1-472d-ed3b82a7d23a
+Accept: application/json
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/payments/confirmed?pageSize=2&pageNumber=0
+Accept: application/json
+Content-Type: application/json

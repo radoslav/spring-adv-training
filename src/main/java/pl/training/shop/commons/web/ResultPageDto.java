@@ -9,6 +9,6 @@ public class ResultPageDto<T> {
 
     List<T> data;
     int pageNumber;
-    long pageSize;
+    long totalPages;
 
 }

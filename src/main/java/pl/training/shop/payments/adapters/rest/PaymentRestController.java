@@ -2,12 +2,13 @@ package pl.training.shop.payments.adapters.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.training.shop.commons.Page;
 import pl.training.shop.commons.web.LocationUri;
+import pl.training.shop.commons.web.ResultPageDto;
 import pl.training.shop.payments.ports.PaymentService;
+
+import static pl.training.shop.payments.domain.PaymentStatus.CONFIRMED;
 
 @RequestMapping("api/payments")
 @RestController
@@ -26,5 +27,21 @@ public class PaymentRestController {
         return ResponseEntity.created(locationUri).body(paymentDto);
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<PaymentDto> getById(@PathVariable String id) {
+        var payment = paymentService.getById(id);
+        var paymentDto = paymentMapper.toDto(payment);
+        return ResponseEntity.ok(paymentDto);
+    }
+
+    @GetMapping("confirmed")
+    public ResponseEntity<ResultPageDto<PaymentDto>> getConfirmedPayments(
+            @RequestParam(required = false, defaultValue = "0") int pageNumber,
+            @RequestParam(required = false, defaultValue = "5") int pageSize) {
+        var page = new Page(pageNumber, pageSize);
+        var resultPage = paymentService.getByStatus(CONFIRMED, page);
+        var resultPageDto = paymentMapper.toDto(resultPage);
+        return ResponseEntity.ok(resultPageDto);
+    }
 
 }
