@@ -25,7 +25,7 @@ public class PaymentRestController {
         var paymentRequest = paymentMapper.toDomain(paymentRequestDto);
         var payment = paymentService.process(paymentRequest);
         var paymentDto = paymentMapper.toDto(payment);
-        var locationUri = LocationUri.withId(paymentDto.getId());
+        var locationUri = LocationUri.fromRequest(paymentDto.getId());
         return ResponseEntity.created(locationUri).body(paymentDto);
     }
 

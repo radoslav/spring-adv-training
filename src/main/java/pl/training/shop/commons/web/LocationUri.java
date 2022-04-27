@@ -6,14 +6,14 @@ import java.net.URI;
 
 public class LocationUri {
 
-    private static final String ID_SEGMENT = "/{id}";
+    public static final String SEGMENT_SEPARATOR = "/";
 
     private LocationUri() {}
 
-    public static URI withId(Object id) {
+    public static URI fromRequest(Object id) {
         return ServletUriComponentsBuilder.fromCurrentRequest()
-                .path(ID_SEGMENT)
-                .buildAndExpand(id)
+                .path(SEGMENT_SEPARATOR + id)
+                .build()
                 .toUri();
     }
 
