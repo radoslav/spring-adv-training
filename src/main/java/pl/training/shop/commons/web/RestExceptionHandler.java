@@ -14,8 +14,12 @@ public class RestExceptionHandler {
     private final MessageSource messageSource;
 
     protected ResponseEntity<ExceptionDto> createResponse(Exception exception, HttpStatus status, Locale locale) {
-        var description = getDescription(exception.getClass().getSimpleName(), locale);
+        var description = getDescription(getKey(exception), locale);
         return ResponseEntity.status(status).body(new ExceptionDto(description));
+    }
+
+    protected String getKey(Exception exception) {
+        return exception.getClass().getSimpleName();
     }
 
     protected String getDescription(String key, Locale locale) {

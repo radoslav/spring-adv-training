@@ -8,6 +8,8 @@ import pl.training.shop.commons.web.LocationUri;
 import pl.training.shop.commons.web.ResultPageDto;
 import pl.training.shop.payments.ports.PaymentService;
 
+import javax.validation.Valid;
+
 import static pl.training.shop.payments.domain.PaymentStatus.CONFIRMED;
 
 @RequestMapping("api/payments")
@@ -19,7 +21,7 @@ public class PaymentRestController {
     private final RestPaymentMapper paymentMapper;
 
     @PostMapping
-    public ResponseEntity<PaymentDto> process(@RequestBody PaymentRequestDto paymentRequestDto) {
+    public ResponseEntity<PaymentDto> process(@Valid @RequestBody PaymentRequestDto paymentRequestDto) {
         var paymentRequest = paymentMapper.toDomain(paymentRequestDto);
         var payment = paymentService.process(paymentRequest);
         var paymentDto = paymentMapper.toDto(payment);
