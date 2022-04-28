@@ -13,7 +13,7 @@ import pl.training.shop.payments.ports.PaymentService;
 
 import javax.validation.Valid;
 
-@RequestMapping("payments")
+@RequestMapping("payments/process")
 @Controller
 @RequiredArgsConstructor
 public class PaymentWebController {
@@ -21,7 +21,7 @@ public class PaymentWebController {
     private final PaymentService paymentService;
     private final WebPaymentMapper paymentMapper;
 
-    @GetMapping("process")
+    @GetMapping
     public String showPaymentForm(Model model) {
         var paymentRequestViewModel = new PaymentRequestViewModel();
         paymentRequestViewModel.setValue("100 PLN");
@@ -29,7 +29,7 @@ public class PaymentWebController {
         return "payments/payment-form";
     }
 
-    @PostMapping("process")
+    @PostMapping
     public String process(@Valid @ModelAttribute("paymentRequest") PaymentRequestViewModel paymentRequestViewModel,
                           BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
