@@ -18,7 +18,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static pl.training.shop.payments.domain.PaymentFixture.*;
+import static pl.training.shop.payments.PaymentFixture.*;
 
 @SpringBootTest(classes = ShopApplication.class, webEnvironment = RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -35,11 +35,11 @@ class PaymentRestControllerIntegrationTest {
     void given_payment_when_get_by_id_then_returns_the_payment() throws Exception {
         entityManager.persist(createPaymentEntity());
         entityManager.flush();
-        mockMvc.perform(get("/api/payments/" + TEST_ID)
+        mockMvc.perform(get("/api/payments/" + PAYMENT_ID)
                 .accept(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(TEST_ID)))
-                .andExpect(jsonPath("$.value", is(TEST_PAYMENT_VALUE.toString())));
+                .andExpect(jsonPath("$.id", is(PAYMENT_ID)))
+                .andExpect(jsonPath("$.value", is(PAYMENT_VALUE.toString())));
     }
 
 }

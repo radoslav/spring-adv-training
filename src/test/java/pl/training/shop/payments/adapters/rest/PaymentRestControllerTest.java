@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static pl.training.shop.payments.domain.PaymentFixture.*;
+import static pl.training.shop.payments.PaymentFixture.*;
 
 @WebMvcTest(PaymentRestController.class)
 @ExtendWith(SpringExtension.class)
@@ -47,17 +47,17 @@ class PaymentRestControllerTest {
 
     @BeforeEach
     void beforeEach() {
-        when(paymentService.getById(TEST_ID)).thenReturn(TEST_PAYMENT);
+        when(paymentService.getById(PAYMENT_ID)).thenReturn(TEST_PAYMENT);
         when(mapper.toDto(any(Payment.class))).then(MAP_TO_DTO);
     }
 
     @Test
     void given_payment_when_get_by_id_then_returns_the_payment() throws Exception {
-        mockMvc.perform(get("/api/payments/" + TEST_ID)
+        mockMvc.perform(get("/api/payments/" + PAYMENT_ID)
                 .accept(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(TEST_ID)))
-                .andExpect(jsonPath("$.value", is(TEST_PAYMENT_VALUE.toString())));
+                .andExpect(jsonPath("$.id", is(PAYMENT_ID)))
+                .andExpect(jsonPath("$.value", is(PAYMENT_VALUE.toString())));
     }
 
 }

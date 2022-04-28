@@ -11,8 +11,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import javax.persistence.EntityManager;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static pl.training.shop.payments.domain.PaymentFixture.createPaymentEntity;
-import static pl.training.shop.payments.domain.PaymentStatus.CONFIRMED;
+import static pl.training.shop.payments.PaymentFixture.PAYMENT_STATUS;
+import static pl.training.shop.payments.PaymentFixture.createPaymentEntity;
 
 @DataJpaTest
 @ExtendWith(SpringExtension.class)
@@ -31,7 +31,7 @@ class JpaPaymentRepositoryTest {
 
     @Test
     void given_confirmed_payment_in_database_when_get_by_status_then_returns_the_payment() {
-        var result = paymentRepository.getByStatus(CONFIRMED.name(), PageRequest.of(0, 1));
+        var result = paymentRepository.getByStatus(PAYMENT_STATUS.name(), PageRequest.of(0, 1));
         assertFalse(result.getContent().isEmpty());
     }
 
