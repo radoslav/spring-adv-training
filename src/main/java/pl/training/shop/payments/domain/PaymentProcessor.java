@@ -46,7 +46,7 @@ public class PaymentProcessor implements PaymentService {
 
     @Override
     public ResultPage<Payment> getByStatus(PaymentStatus status, Page page) {
-        return paymentsRepository.getByStatu(status, page);
+        return paymentsRepository.getByStatus(status, page);
     }
 
 }
