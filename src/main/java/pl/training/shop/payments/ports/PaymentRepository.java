@@ -13,6 +13,6 @@ public interface PaymentRepository {
 
     Optional<Payment> getById(String id);
 
-    ResultPage<Payment> getByStatu(PaymentStatus status, Page page);
+    ResultPage<Payment> getByStatus(PaymentStatus status, Page page);
 
 }

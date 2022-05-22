@@ -28,7 +28,7 @@ public class InMemoryPaymentRepository implements PaymentRepository {
     }
 
     @Override
-    public ResultPage<Payment> getByStatu(PaymentStatus status, Page page) {
+    public ResultPage<Payment> getByStatus(PaymentStatus status, Page page) {
         var data = payments.values().stream()
                 .filter(payment -> payment.getStatus().equals(status))
                 .toList();
