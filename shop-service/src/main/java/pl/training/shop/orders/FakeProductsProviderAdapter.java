@@ -5,7 +5,7 @@ import pl.training.orders.ports.ProductsProvider;
 
 import java.util.Optional;
 
-public class FakeProductsProvider implements ProductsProvider {
+public class FakeProductsProviderAdapter implements ProductsProvider {
 
     @Override
     public Optional<Product> getById(Long id) {
