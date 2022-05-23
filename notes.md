@@ -1,5 +1,3 @@
-Bazując na przykładzie z płatnościami, zaimplementować moduł orders tak, aby spełniał kontrakt zdefiniowany w orders-ports.
-Dodać wymagane adaptery na poziomie shop-service, tak aby możliwe było składanie zamówień
-(wymaga stworzenia FakeProductsProviderAdapter, który w przyszłości będzie pobierał dane z sieci oraz integracji z modułem Payments).
-Składanie zamówienia ma się sprowadzać do naliczenia należności / kwoty całkowitej, dokonania płatności na tę kwotę i zalogowania
-na konsoli informacji o zamówieniu i płatności.
+Bazując na przykładzie z płatnościami, zaimplementować moduły orders-domain oraz orders-adapters tak, aby spełniały kontrakt 
+zdefiniowany w orders-ports. Składanie zamówienia ma się sprowadzać do naliczenia należności / kwoty całkowitej, 
+dokonania płatności na tę kwotę oraz zalogowania na konsoli informacji o zamówieniu i płatności (nie ma potrzeby zapisu danych do bazy).
