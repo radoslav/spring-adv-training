@@ -12,8 +12,6 @@ import java.util.List;
 @Mapper(componentModel = "spring", imports = {BigDecimal.class, Currency.class})
 public interface JpaPersistencePaymentMapper {
 
-    String CURRENCY_SEPARATOR = " ";
-
     @Mapping(target = "value", expression = "java(new BigDecimal(payment.getValue().split(Currency.CURRENCY_SEPARATOR)[1]))")
     @Mapping(target = "currency", expression = "java(payment.getValue().split(Currency.CURRENCY_SEPARATOR)[0])")
     PaymentEntity toEntity(Payment payment);
