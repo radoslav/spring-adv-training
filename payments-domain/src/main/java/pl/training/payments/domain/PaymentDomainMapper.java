@@ -14,14 +14,20 @@ import java.util.List;
 interface PaymentDomainMapper {
 
     PaymentDomain toDomain(Payment payment);
+
     Payment toPorts(PaymentDomain paymentDomain);
+
     PaymentRequestDomain toDomain(PaymentRequest paymentRequest);
+
     PaymentStatus toPorts(PaymentStatusDomain paymentStatusDomain);
+
     PaymentStatusDomain toDomain(PaymentStatus paymentStatus);
 
     @IterableMapping(elementTargetType = PaymentDomain.class)
     List<PaymentDomain> toDomain(List<Payment> payments);
+
     ResultPage<Payment> toPorts(ResultPage<PaymentDomain> paymentDomainResultPage);
+
     ResultPage<PaymentDomain> toDomain(ResultPage<Payment> paymentResultPage);
 
 }
