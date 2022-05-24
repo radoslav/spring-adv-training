@@ -1,4 +1,4 @@
-package pl.training.shop.commons.aop;
+package pl.training.commons.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,5 +7,8 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Atomic {
+public @interface Retry {
+
+    int attempts() default 3;
+
 }

@@ -19,7 +19,7 @@ public class TransactionProvider {
     @Setter
     private TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
 
-    @Around("@annotation(Atomic)")
+    @Around("@annotation(pl.training.commons.aop.Atomic)")
     public Object runWithTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
         var transaction = transactionManager.getTransaction(transactionDefinition);
         try {
