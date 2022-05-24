@@ -7,7 +7,7 @@ import java.util.Map;
 @Data
 public class OrderDto {
 
-    Long id;
+    private Long id;
     private Map<Long, Integer> entries;
 
 }
