@@ -1,6 +1,7 @@
 package pl.training.shop.orders;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import pl.training.orders.ports.Payment;
 import pl.training.orders.ports.PaymentService;
 import pl.training.payments.ports.PaymentRequest;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Optional;
 
+@Component
 @RequiredArgsConstructor
 public class PaymentServiceAdapter implements PaymentService {
 

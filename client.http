@@ -18,3 +18,16 @@ Content-Type: application/json
 GET http://localhost:8080/api/payments/confirmed?pageSize=2&pageNumber=0
 Accept: application/json
 Content-Type: application/json
+
+###
+
+POST http://localhost:8080/api/orders
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 1,
+  "entries": {
+    "1": 2
+  }
+}
