@@ -11,11 +11,11 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Optional;
 
+import static pl.training.commons.money.Currency.CURRENCY_SEPARATOR;
+
 @Component
 @RequiredArgsConstructor
 public class PaymentServiceAdapter implements PaymentService {
-
-    private static final String CURRENCY_SEPARATOR = " ";
 
     private final ProcessPaymentUseCase processPaymentUseCase;
 

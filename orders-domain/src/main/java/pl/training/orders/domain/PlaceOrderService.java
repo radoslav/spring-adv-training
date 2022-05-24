@@ -8,7 +8,7 @@ import pl.training.orders.ports.PaymentService;
 import java.math.BigDecimal;
 
 import static java.util.Collections.emptyMap;
-import static pl.training.orders.domain.OrderDomain.DEFAULT_CURRENCY;
+import static pl.training.commons.money.Currency.DEFAULT_CURRENCY;
 
 @Log
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
