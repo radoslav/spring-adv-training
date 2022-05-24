@@ -8,6 +8,6 @@ import java.util.Map;
 public class OrderDto {
 
     Long id;
-    Map<Long, Integer> entries;
+    private Map<Long, Integer> entries;
 
 }
