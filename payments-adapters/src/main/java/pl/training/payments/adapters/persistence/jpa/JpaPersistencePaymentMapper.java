@@ -11,11 +11,13 @@ import java.util.List;
 @Mapper(componentModel = "spring", imports = BigDecimal.class)
 public interface JpaPersistencePaymentMapper {
 
-    @Mapping(target = "value", expression = "java(new BigDecimal(payment.getValue().split(\" \")[1]))")
-    @Mapping(target = "currency", expression = "java(payment.getValue().split(\" \")[0])")
+    String CURRENCY_SEPARATOR = " ";
+
+    @Mapping(target = "value", expression = "java(new BigDecimal(payment.getValue().split(CURRENCY_SEPARATOR)[1]))")
+    @Mapping(target = "currency", expression = "java(payment.getValue().split(CURRENCY_SEPARATOR)[0])")
     PaymentEntity toEntity(Payment payment);
 
-    @Mapping(target = "value", expression = "java(entity.getValue() + \" \" + entity.getCurrency())")
+    @Mapping(target = "value", expression = "java(entity.getValue() + CURRENCY_SEPARATOR + entity.getCurrency())")
     Payment toDomain(PaymentEntity entity);
 
 

@@ -13,11 +13,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PaymentServiceAdapter implements PaymentService {
 
+    private static final String CURRENCY_SEPARATOR = " ";
+
     private final ProcessPaymentUseCase processPaymentUseCase;
 
     @Override
     public Optional<Payment> pay(Long requestId, BigDecimal value, String currency, Map<String, String> properties) {
-        var paymentRequest = new PaymentRequest(requestId, value + " " + currency);
+        var paymentRequest = new PaymentRequest(requestId, value + CURRENCY_SEPARATOR + currency);
         var payment= processPaymentUseCase.process(paymentRequest);
         return Optional.of(new Payment(payment.getId(), payment.getStatus().name()));
     }
