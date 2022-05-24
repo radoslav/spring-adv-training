@@ -5,10 +5,10 @@ import org.javamoney.moneta.FastMoney;
 
 import java.util.List;
 
+import static pl.training.commons.money.Currency.DEFAULT_CURRENCY;
+
 @Value
 class OrderDomain {
-
-    static final String DEFAULT_CURRENCY = "PLN";
 
     Long id;
     List<OrderEntryDomain> entries;
