@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Optional;
 
-import static pl.training.commons.money.Currency.CURRENCY_SEPARATOR;
+import static pl.training.commons.money.Money.CURRENCY_SEPARATOR;
 
 @RequiredArgsConstructor
 public class PaymentServiceAdapter implements PaymentService {

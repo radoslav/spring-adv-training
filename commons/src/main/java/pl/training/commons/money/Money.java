@@ -1,8 +1,8 @@
 package pl.training.commons.money;
 
-public class Currency {
+public class Money {
     
-    private Currency() {
+    private Money() {
     }
 
     public static final String DEFAULT_CURRENCY = "PLN";
