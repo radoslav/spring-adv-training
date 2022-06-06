@@ -19,7 +19,6 @@ public interface JpaPersistencePaymentMapper {
     @Mapping(target = "value", expression = "java(FastMoney.of(entity.getValue(), entity.getCurrency()))")
     Payment toDomain(PaymentEntity entity);
 
-
     @IterableMapping(elementTargetType = Payment.class)
     List<Payment> toDomain(List<PaymentEntity> entities);
 
