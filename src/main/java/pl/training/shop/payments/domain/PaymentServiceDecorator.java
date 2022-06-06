@@ -3,7 +3,10 @@ package pl.training.shop.payments.domain;
 import lombok.RequiredArgsConstructor;
 import pl.training.shop.commons.Page;
 import pl.training.shop.commons.ResultPage;
+import pl.training.shop.payments.ports.Payment;
+import pl.training.shop.payments.ports.PaymentRequest;
 import pl.training.shop.payments.ports.PaymentService;
+import pl.training.shop.payments.ports.PaymentStatus;
 
 import java.util.List;
 

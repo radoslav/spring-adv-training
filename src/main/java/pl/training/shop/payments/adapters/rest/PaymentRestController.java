@@ -10,9 +10,7 @@ import pl.training.shop.commons.web.LocationUri;
 import pl.training.shop.commons.web.ResultPageDto;
 import pl.training.shop.payments.ports.PaymentService;
 
-import javax.validation.Valid;
-
-import static pl.training.shop.payments.domain.PaymentStatus.CONFIRMED;
+import static pl.training.shop.payments.ports.PaymentStatus.CONFIRMED;
 
 @RequestMapping("api/payments")
 @RestController

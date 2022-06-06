@@ -4,9 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
 import pl.training.shop.commons.Page;
 import pl.training.shop.commons.ResultPage;
-import pl.training.shop.payments.ports.PaymentRepository;
-import pl.training.shop.payments.ports.PaymentService;
-import pl.training.shop.payments.ports.TimeProvider;
+import pl.training.shop.payments.ports.*;
 
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {

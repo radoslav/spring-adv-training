@@ -1,4 +1,4 @@
-package pl.training.shop.payments.domain;
+package pl.training.shop.payments.ports;
 
 import lombok.Value;
 import org.javamoney.moneta.FastMoney;

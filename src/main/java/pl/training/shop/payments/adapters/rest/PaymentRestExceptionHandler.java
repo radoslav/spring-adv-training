@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import pl.training.shop.commons.web.ExceptionDto;
 import pl.training.shop.commons.web.RestExceptionResponseBuilder;
-import pl.training.shop.payments.domain.PaymentNotFoundException;
+import pl.training.shop.payments.ports.PaymentNotFoundException;
 
 import java.util.Locale;
 

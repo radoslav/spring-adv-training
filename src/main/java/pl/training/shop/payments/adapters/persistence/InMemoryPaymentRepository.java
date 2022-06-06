@@ -3,8 +3,8 @@ package pl.training.shop.payments.adapters.persistence;
 import lombok.Setter;
 import pl.training.shop.commons.Page;
 import pl.training.shop.commons.ResultPage;
-import pl.training.shop.payments.domain.Payment;
-import pl.training.shop.payments.domain.PaymentStatus;
+import pl.training.shop.payments.ports.Payment;
+import pl.training.shop.payments.ports.PaymentStatus;
 import pl.training.shop.payments.ports.PaymentRepository;
 
 import java.util.HashMap;

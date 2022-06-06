@@ -7,9 +7,9 @@ import org.mapstruct.ValueMapping;
 import pl.training.shop.commons.ResultPage;
 import pl.training.shop.commons.money.FastMoneyMapper;
 import pl.training.shop.commons.web.ResultPageDto;
-import pl.training.shop.payments.domain.Payment;
-import pl.training.shop.payments.domain.PaymentRequest;
-import pl.training.shop.payments.domain.PaymentStatus;
+import pl.training.shop.payments.ports.Payment;
+import pl.training.shop.payments.ports.PaymentRequest;
+import pl.training.shop.payments.ports.PaymentStatus;
 
 import java.util.List;
 

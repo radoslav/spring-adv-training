@@ -4,7 +4,7 @@ import org.javamoney.moneta.FastMoney;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import pl.training.shop.payments.domain.Payment;
+import pl.training.shop.payments.ports.Payment;
 
 import java.math.BigDecimal;
 import java.util.List;

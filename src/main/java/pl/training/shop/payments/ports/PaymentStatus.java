@@ -1,4 +1,4 @@
-package pl.training.shop.payments.domain;
+package pl.training.shop.payments.ports;
 
 public enum PaymentStatus {
 
