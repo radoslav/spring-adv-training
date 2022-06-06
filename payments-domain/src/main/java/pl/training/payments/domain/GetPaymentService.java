@@ -5,12 +5,11 @@ import lombok.RequiredArgsConstructor;
 import pl.training.payments.ports.model.Page;
 import pl.training.payments.ports.model.PaymentNotFoundException;
 import pl.training.payments.ports.model.ResultPage;
-import pl.training.payments.ports.output.PaymentsReader;
 
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class GetPaymentService {
 
-    private PaymentsReader paymentsReader;
+    private final PaymentsReaderAdapter paymentsReader;
 
     PaymentDomain getById(String id) {
         return paymentsReader.getById(id)
