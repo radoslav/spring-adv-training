@@ -1,4 +1,4 @@
-package pl.training.shop.payments;
+package pl.training.shop;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
