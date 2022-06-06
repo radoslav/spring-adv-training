@@ -12,7 +12,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>pl.trainnig.payments</groupId>
+    <groupId>pl.training.payments</groupId>
     <artifactId>adapters</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
