@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/api/orders
+POST http://localhost:8080/api/orders
 Accept: application/json
 Content-Type: application/json
 
