@@ -4,14 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
 import pl.training.shop.commons.Page;
 import pl.training.shop.commons.ResultPage;
-import pl.training.shop.commons.aop.Length;
-import pl.training.shop.commons.aop.Lock;
-import pl.training.shop.commons.aop.LogExecutionTime;
-import pl.training.shop.commons.aop.Retry;
+import pl.training.shop.commons.aop.*;
 import pl.training.shop.payments.ports.*;
 
 import static pl.training.shop.commons.aop.Lock.LockType.WRITE;
 
+@Atomic
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
 
@@ -22,7 +20,8 @@ public class PaymentProcessor implements PaymentService {
     private final PaymentRepository paymentsRepository;
     private final TimeProvider timeProvider;
 
-    @Retry(attempts = 4)
+    @Atomic
+    // @Retry(attempts = 4)
     // @Lock(type = WRITE)
     // @LogExecutionTime
     // @LogPayment
@@ -31,7 +30,6 @@ public class PaymentProcessor implements PaymentService {
         var paymentValue = calculatePaymentValue(paymentRequest.getValue());
         var payment = createPayment(paymentValue);
         return paymentsRepository.save(payment);
-        // throw new RuntimeException();
     }
 
     private Payment createPayment(FastMoney paymentValue) {
