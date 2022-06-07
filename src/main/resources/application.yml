@@ -19,14 +19,9 @@ spring:
     # username: admin
     # password: admin
     # driver-class-name: org.postgresql.Driver
-  #mongodb:
-  #  embedded:
-  #    version: 3.4.6
-  data:
-    mongodb:
-      username: admin
-      password: admin
-      database: payments
+  mongodb:
+    embedded:
+      version: 3.4.6
 logging:
   level:
     org.javamoney.moneta.FastMoney: OFF
