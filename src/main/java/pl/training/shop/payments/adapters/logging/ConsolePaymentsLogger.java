@@ -3,14 +3,17 @@ package pl.training.shop.payments.adapters.logging;
 import lombok.extern.java.Log;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import pl.training.shop.payments.ports.Payment;
 import pl.training.shop.payments.ports.PaymentRequest;
 
+//@Order(10_000)
 @Aspect
 @Component
 @Log
-public class ConsolePaymentsLogger {
+public class ConsolePaymentsLogger implements Ordered {
 
     @Pointcut("execution(pl.training.shop.payments.ports.Payment pl.training..*.PaymentProcessor.proc*(..))")
     // @Pointcut("@annotation(pl.training.shop.payments.domain.LogPayment)")
@@ -37,6 +40,11 @@ public class ConsolePaymentsLogger {
     @After("process()")
     public void onFinish() {
         log.info("Payment processing complete");
+    }
+
+    @Override
+    public int getOrder() {
+        return 10;
     }
 
 }
