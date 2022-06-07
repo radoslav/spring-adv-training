@@ -28,6 +28,7 @@ public class PaymentEntity {
 
     @Id
     private String id;
+    @Column(name = "amount")
     private BigDecimal value;
     private String currency;
     private Instant timestamp;

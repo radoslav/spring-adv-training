@@ -2,6 +2,7 @@ package pl.training.shop.payments.adapters.persistence.jpa;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,8 +20,10 @@ class PropertyEntity {
     @Id
     private Long id;
     @NonNull
+    @Column(name = "PROPERTY_KEY")
     private String key;
     @NonNull
+    @Column(name = "PROPERTY_VALUE")
     private String value;
 
     @Override
