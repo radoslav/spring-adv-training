@@ -22,6 +22,9 @@ spring:
   mongodb:
     embedded:
       version: 3.4.6
+  data:
+    mongodb:
+      port: 30000
 logging:
   level:
     org.javamoney.moneta.FastMoney: OFF
