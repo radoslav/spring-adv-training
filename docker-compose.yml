@@ -11,3 +11,11 @@ services:
       - PGDATA=/var/lib/postgresql/data/application
     volumes:
       - ./data:/var/lib/postgresql/data/application
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INIT_DB_ROOT_USERNAME: "admin"
+      MONGO_INIT_DB_ROOT_PASSWORD: "admin"
+      MONGO_INIT_DB_ROOT_DATABASE: "payments"
