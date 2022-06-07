@@ -4,6 +4,7 @@ spring:
     generate-ddl: true
     # hibernate:
       # ddl-auto: create-drop
+    show-sql: true
   messages:
     basename: exceptions
   h2:
