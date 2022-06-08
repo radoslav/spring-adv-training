@@ -15,8 +15,8 @@ public class MongoExamples {
 
     private final MongoPaymentRepository paymentRepository;
 
-    @Async
-    @Scheduled(fixedRate = 10_000)
+    //@Async
+    //@Scheduled(fixedRate = 10_000)
     public void run() {
         var result = paymentRepository.findAll();
         result.forEach(document -> log.info(document.toString()));
