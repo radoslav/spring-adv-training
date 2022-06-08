@@ -53,7 +53,7 @@ public class PaymentsService {
                 .map(mapper::toDomain);
     }
 
-    public Flux<BigDecimal> getRateChanges() {
+    public Flux<BigDecimal> getExchangeRates() {
         var interval =  Flux.interval(ofSeconds(RATE_UPDATE_INTERVAL_IN_SECONDS));
         var values = Flux.generate(this::generateNewRate).map(BigDecimal::valueOf);
         return interval.zipWith(values).map(Tuple2::getT2);

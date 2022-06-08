@@ -29,7 +29,7 @@ public class PaymentRestAdapter {
     }
 
     public Mono<ServerResponse> getExchangeRates(ServerRequest serverRequest) {
-        return mapper.toServerResponseValues(paymentsService.getRateChanges());
+        return mapper.toServerResponseValues(paymentsService.getExchangeRates());
     }
 
 }
