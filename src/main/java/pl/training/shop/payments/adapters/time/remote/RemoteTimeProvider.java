@@ -5,25 +5,30 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 import pl.training.shop.payments.ports.ServiceUnavailableException;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class RestTemplateTimeProvider {
+public class RemoteTimeProvider {
 
-    private final RestTemplate restTemplate;
+    /*private final RestTemplate restTemplate;
 
     @Value("${time-api.endpoint}/${time-api.timezone}")
     @Setter
-    private String timeApiUrl;
+    private String timeApiUrl;*/
+
+    @Value("${time-api.timezone}")
+    @Setter
+    private String timezone;
+    private final TimeProviderApi timeProviderApi;
 
     public Optional<Long> getTime() {
         try {
-           return Optional.ofNullable(restTemplate.getForObject(timeApiUrl, TimeDto.class))
-                   .map(TimeDto::getUnixtime);
+            return // Optional.ofNullable(restTemplate.getForObject(timeApiUrl, TimeDto.class))
+                    Optional.ofNullable(timeProviderApi.getTime(timezone))
+                            .map(TimeDto::getUnixtime);
         } catch (RestClientException exception) {
             throw new ServiceUnavailableException();
         }

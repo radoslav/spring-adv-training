@@ -13,7 +13,7 @@ import java.time.Instant;
 @RequiredArgsConstructor
 public class RemoteTimeProviderAdapter implements TimeProvider {
 
-    private final RestTemplateTimeProvider timeProvider;
+    private final RemoteTimeProvider timeProvider;
     private final RemoteTimeRestMapper mapper;
 
     @Override

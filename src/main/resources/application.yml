@@ -25,9 +25,25 @@ spring:
   data:
     mongodb:
       port: 30000
+  profiles:
+    active: development
 logging:
   level:
     org.javamoney.moneta.FastMoney: OFF
 time-api:
   endpoint: http://worldtimeapi.org/api/timezone
   timezone: Europe/Warsaw
+  token: 1234
+---
+spring:
+  config:
+    activate:
+      on-profile: development
+logging:
+  level:
+    pl.training.shop: DEBUG
+feign:
+  client:
+    config:
+      timeProvider:
+        logger-level: headers
