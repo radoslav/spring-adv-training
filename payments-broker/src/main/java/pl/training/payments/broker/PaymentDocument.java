@@ -4,8 +4,6 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
-
 @Document
 @Data
 public class PaymentDocument {
@@ -14,6 +12,5 @@ public class PaymentDocument {
     private String id;
     private String value;
     private String status;
-    private Instant timestamp;
 
 }
