@@ -28,3 +28,6 @@ spring:
 logging:
   level:
     org.javamoney.moneta.FastMoney: OFF
+time-api:
+  endpoint: http://worldtimeapi.org/api/timezone
+  timezone: Europe/Warsaw
