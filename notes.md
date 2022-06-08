@@ -1,0 +1,2 @@
+- serwis, ktory wystwaiwa nieskonczony strumien kursu zadanej waluty_
+- klient, ktory nasluchuje zmian kurs
