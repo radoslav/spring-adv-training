@@ -39,13 +39,17 @@ public class RemotePaymentsProcessor {
 
     @PostConstruct
     public void init() {
-        webClientBuilder.build()
-                .get()
-                .uri(LATEST_PAYMENT)
-                .retrieve()
-                .bodyToFlux(PaymentDto.class)
-                .map(mapper::toDomain)
-                .subscribe(processedPayment -> log.info("New payment processed: " + processedPayment), exception -> log.warning(exception.toString()));
+        try {
+            webClientBuilder.build()
+                    .get()
+                    .uri(LATEST_PAYMENT)
+                    .retrieve()
+                    .bodyToFlux(PaymentDto.class)
+                    .map(mapper::toDomain)
+                    .subscribe(processedPayment -> log.info("New payment processed: " + processedPayment), exception -> log.warning(exception.toString()));
+        } catch (Exception exception) {
+            log.info("Payments broker not found");
+        }
     }
 
 }

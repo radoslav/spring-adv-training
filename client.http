@@ -1,4 +1,4 @@
-POST http://localhost:8080/api/payments
+POST http://localhost:8000/api/payments
 Accept: application/json
 Content-Type: application/json
 
@@ -9,13 +9,13 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/api/payments/b4
+GET http://localhost:8000/api/payments/b4
 Accept: application/json
 Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/api/payments/confirmed?pageSize=2&pageNumber=0
+GET http://localhost:8000/api/payments/confirmed?pageSize=2&pageNumber=0
 Accept: application/json
 Content-Type: application/json
 
