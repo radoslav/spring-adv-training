@@ -8,23 +8,21 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
-import javax.jms.Queue;
-
 @Service
 @RequiredArgsConstructor
 public class MailService {
 
+    private static final String MAIL_QUEUE = "Mail";
     private static final String ENCODING = "utf-8";
 
     private final JmsTemplate jmsTemplate;
-    private final Queue mailQueue;
     private final JavaMailSender mailSender;
 
     public void send(MailMessage message) {
-        jmsTemplate.send(mailQueue, session -> session.createObjectMessage(message));
+        jmsTemplate.send(MAIL_QUEUE, session -> session.createObjectMessage(message));
     }
 
-    @JmsListener(destination = "Mail", containerFactory = "mailQueueContainerFactory")
+    @JmsListener(destination = MAIL_QUEUE, containerFactory = "mailQueueContainerFactory")
     void onMailMessage(MailMessage message) {
         mailSender.send(mimeMessagePreparator(message));
     }
