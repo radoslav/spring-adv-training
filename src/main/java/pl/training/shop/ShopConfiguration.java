@@ -6,6 +6,8 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jndi.JndiTemplate;
@@ -78,6 +80,24 @@ public class ShopConfiguration implements WebMvcConfigurer {
     public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory) {
         var cachingConnectionFactory = new CachingConnectionFactory(connectionFactory);
         return new JmsTemplate(cachingConnectionFactory);
+    }
+
+    @Bean
+    public DefaultJmsListenerContainerFactory trainingTopicContainerFactory(ConnectionFactory connectionFactory) {
+        var container = new DefaultJmsListenerContainerFactory();
+        container.setConnectionFactory(connectionFactory);
+        container.setConcurrency("5-10");
+        container.setPubSubDomain(true);
+        return container;
+    }
+
+    @Bean
+    public DefaultJmsListenerContainerFactory mailQueueContainerFactory(ConnectionFactory connectionFactory) {
+        var container = new DefaultJmsListenerContainerFactory();
+        container.setConnectionFactory(connectionFactory);
+        container.setConcurrency("5-10");
+        container.setPubSubDomain(false);
+        return container;
     }
 
 }
