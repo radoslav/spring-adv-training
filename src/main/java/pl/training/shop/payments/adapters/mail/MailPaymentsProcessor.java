@@ -20,6 +20,12 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class MailPaymentsProcessor {
 
+    private static final String MAIL_TITLE = "Payment notification";
+    private static final String DEFAULT_LANGUAGE = "pl";
+    private static final String TEMPLATE_NAME = "PaymentNotification";
+    private static final String RECIPIENT = "client@training.pl";
+    public static final String PAYMENT_VALUE_KEY = "value";
+
     private final TemplateService templateService;
     private final MailService mailService;
 
@@ -28,9 +34,9 @@ public class MailPaymentsProcessor {
 
     @AfterReturning(value = "execution(pl.training.shop.payments.ports.Payment pl.training..*.PaymentProcessor.proc*(..))", returning = "payment")
     public void onPayment(Payment payment) {
-        Map<String, Object> data = Map.of("value", payment.getValue().toString());
-        var mailText = templateService.evaluate("PaymentNotification", data, "pl");
-        var mailMessage = new MailMessage(sender, List.of("client@training.pl"), "Payment notification", mailText);
+        Map<String, Object> data = Map.of(PAYMENT_VALUE_KEY, payment.getValue().toString());
+        var mailText = templateService.evaluate(TEMPLATE_NAME, data, DEFAULT_LANGUAGE);
+        var mailMessage = new MailMessage(sender, List.of(RECIPIENT), MAIL_TITLE, mailText);
         mailService.send(mailMessage);
     }
 
