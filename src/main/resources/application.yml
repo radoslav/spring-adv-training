@@ -32,6 +32,15 @@ spring:
   mail:
     host: localhost
     port: 10025
+  # host: smtp.gmail.com
+  # port: 587
+  # tls: true
+  # username:
+  # password:
+  # properties:
+  #   mail.smtp.auth: true
+  #   mail.smtp.startls.enabled: true
+  #   mail.smtp.ssl.trust: smtp.gmail.com
   thymeleaf:
     enabled: false
 logging:
