@@ -22,10 +22,15 @@ $(() => {
     function onConnect() {
         updateView(true);
         stompClient.subscribe('/main-room', onMessage);
+        stompClient.subscribe(`/private-rooms/${getUser()}`, onMessage)
+    }
+
+    function getUser() {
+        return $('#username').val();
     }
 
     function connect() {
-        const user = $('#username').val();
+        const user = getUser();
         const socket = new SockJS('/chat');
         stompClient = Stomp.over(socket);
         stompClient.connect({user}, onConnect);

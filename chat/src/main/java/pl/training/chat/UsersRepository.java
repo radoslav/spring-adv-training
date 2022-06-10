@@ -12,18 +12,11 @@ public class UsersRepository {
     private final Map<String, String> data = new HashMap<>();
 
     public synchronized void save(String user, String sessionId) {
-        data.put(user, sessionId);
-    }
-
-    public synchronized Optional<String> getSessionId(String user) {
-        return Optional.ofNullable(data.get(user));
+        data.put(sessionId, user);
     }
 
     public synchronized Optional<String> getUser(String sessionId) {
-        return data.entrySet().stream()
-                .filter(entry -> entry.getValue().equals(sessionId))
-                .findFirst()
-                .map(Map.Entry::getKey);
+        return Optional.ofNullable(data.get(sessionId));
     }
 
 }
