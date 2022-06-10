@@ -15,9 +15,9 @@ public class ChatController {
 
     @MessageMapping("/chat")
     @SendTo("/main-room")
-    public Message onMessage(Message message) {
+    public MessageEvent onMessage(MessageEvent messageEvent) {
         var timestamp = timeProvider.getTimestamp();
-        var response = message.withTimestamp(timestamp);
+        var response = messageEvent.withTimestamp(timestamp);
         log.info("New message: " + response);
         return response;
     }

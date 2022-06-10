@@ -16,7 +16,7 @@ $(() => {
 
     function onMessage(messageEvent) {
         const message = JSON.parse(messageEvent.body);
-        $(`<p>${message.sender} (${message.timestamp}): ${message.text}</p>`).appendTo($('#messages'));
+        $(`<p>${message.timestamp} ${message.sender}: ${message.text}</p>`).appendTo($('#messages'));
     }
 
     function onConnect() {
@@ -25,7 +25,7 @@ $(() => {
     }
 
     function connect() {
-        const user =  $('#username').val();
+        const user = $('#username').val();
         const socket = new SockJS('/chat');
         stompClient = Stomp.over(socket);
         stompClient.connect({user}, onConnect);
