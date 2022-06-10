@@ -53,21 +53,4 @@ time-api:
 mail:
   sender: shop@training.pl
 languages: pl
----
-spring:
-  config:
-    activate:
-      on-profile: development
-  jms:
-    listener:
-      concurrency: 10
-    pub-sub-domain: true
 
-logging:
-  level:
-    pl.training.shop: DEBUG
-feign:
-  client:
-    config:
-      timeProvider:
-        logger-level: headers

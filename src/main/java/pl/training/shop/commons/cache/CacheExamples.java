@@ -19,7 +19,7 @@ public class CacheExamples implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        calculator.preCalculate(1, 3);
+        // calculator.preCalculate(1, 3);
         log.info("Sum for 1 and 3  is: " + calculator.add(1, 3));
         log.info("Sum for 1 and 3  is: " + calculator.add(1, 3));
         calculator.reset("pl.training.shop.commons.cache.Calculator1_3");

@@ -1,0 +1,12 @@
+server:
+  port: 8001
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/h2-secondary.db
+  data:
+    mongodb:
+      port: 30001
+  jms:
+    listener:
+      concurrency: 10
+    pub-sub-domain: true

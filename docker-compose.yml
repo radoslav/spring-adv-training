@@ -157,3 +157,11 @@ services:
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=broker1:9093
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zoo1:2181
       - KAFKA_CLUSTERS_0_READONLY=true
+  hazelcast:
+    image: hazelcast/hazelcast
+    ports:
+      - "5701:5701"
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"

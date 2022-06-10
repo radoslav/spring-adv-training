@@ -1,0 +1,14 @@
+spring:
+  jms:
+    listener:
+      concurrency: 10
+    pub-sub-domain: true
+
+logging:
+  level:
+    pl.training.shop: DEBUG
+feign:
+  client:
+    config:
+      timeProvider:
+        logger-level: headers
